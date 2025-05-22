@@ -3,12 +3,13 @@
 **Universal AI Evolution Framework**  
 *Transform any AI interaction into a continuously improving system through simple reflection*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Discord](https://img.shields.io/discord/1234567890?label=discord&logo=discord&logoColor=white)](https://discord.gg/evo-ai)
+[![License: MIT](https://img.shields.io/badge/License-MIT-turquoise.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-crimson.svg)](https://www.python.org/downloads/)
+[![Discord](https://img.shields.io/badge/Discord-Coming_Soon-lime)](https://discord.com/)
 [![HackerNews](https://img.shields.io/badge/HackerNews-Discussion-orange)](https://news.ycombinator.com/news)
+[![HackerNews](https://img.shields.io/badge/HuggingFace-Repos-gold)](https://huggingface.co/recursivelabs)
 
-
+https://huggingface.co/recursivelabs
 ## Why evo?
 
 Current AI workflows hit a ceiling: **you get one response, then start over**. Research teams waste months on static prompts. Enterprises deploy AI that can't improve. Creators iterate manually through dozens of conversations.
