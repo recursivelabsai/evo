@@ -1,280 +1,311 @@
-# evo
+<div align="center">
+  <h1>🌀 evo</h1>
+  <h3>Prompt-Based Evolutionary Emergence Pipeline</h3>
 
-**Universal AI Evolution Framework**  
-*Transform any AI interaction into a continuously improving system through simple reflection*
+  <p>
+    <a href="#quick-start">Quick Start</a> •
+    <a href="#introduction">Introduction</a> •
+    <a href="#architecture">Architecture</a> •
+    <a href="#key-features">Key Features</a> •
+    <a href="#getting-started">Getting Started</a> •
+    <a href="#evoblueprints">EvoBlueprints</a> •
+    <a href="#community">Community</a> •
+    <a href="#contributing">Contributing</a> •
+    <a href="#roadmap">Roadmap</a>
+  </p>
+  
+  <p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-turquoise.svg)](https://opensource.org/licenses/MIT)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-Repos-gold)](https://huggingface.co/recursivelabs)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-crimson.svg)](https://www.python.org/downloads/)
-[![Discord](https://img.shields.io/badge/Discord-Coming_Soon-lime)](https://discord.com/)
-[![HackerNews](https://img.shields.io/badge/HackerNews-Discussion-orange)](https://news.ycombinator.com/news)
+  </p>
+</div>
 
-## Why evo?
+> *"Evolution emerges when recursive systems process contradiction under constraint. The map becomes the territory - each prompt interaction is a recursive depth layer allowing evolutionary emergence in any AI chat."*
 
-Current AI workflows hit a ceiling: **you get one response, then start over**. Research teams waste months on static prompts. Enterprises deploy AI that can't improve. Creators iterate manually through dozens of conversations.
+## Quick Start
 
-**evo changes everything.**
-
-One simple feedback loop transforms any AI into an evolving intelligence that gets better with every interaction.
-
-```python
-from evo import Agent
-
-# Any AI becomes evolutionary
-agent = Agent("claude")  # or "gpt4", "gemini", "local"
-
-# One line of feedback creates continuous improvement
-result = agent.evolve("Write a research proposal", 
-                     feedback="Make it more compelling and specific")
-
-# Watch your AI get smarter with each iteration
-for i in range(10):
-    result = agent.evolve(result.prompt, user_feedback())
-    print(f"Quality score: {result.quality}")  # Continuously improving
-```
-
-
-## 🚀 Quick Start
-
-**Install**
 ```bash
+# Install evo
 pip install evo-ai
+
+# Initialize a new project
+evo init my-project
+
+# Start the EvoChat interface
+evo chat
+
+# Or, evolve code directly from CLI
+evo evolve path/to/code.py --goal "Optimize for speed while maintaining readability"
 ```
 
-**30-Second Demo**
+Or try our hosted version at [evochat.ai](https://evochat.ai)
+
+## Introduction
+
+`evo` is an open-source framework that operationalizes the power of evolutionary computation through prompt-based AI interactions. Inspired by DeepMind's AlphaEvolve, `evo` democratizes algorithmic evolution, making it accessible to anyone through simple chat interfaces and industry-standard workflows.
+
+With `evo`, you can:
+
+- **Evolve code** - Optimize algorithms, refactor codebases, and discover novel solutions
+- **Improve prompts** - Evolve LLM prompts for better performance on specific tasks
+- **Design systems** - Collaboratively evolve architectures with multiple AI agents
+- **Contribute blueprints** - Share and discover evolutionary recipes for common tasks
+
+Unlike traditional tools, `evo` doesn't just use AI to generate code - it orchestrates multiple frontier AI models in a recursive evolutionary process, where each interaction adds depth to the emergence of novel solutions. The framework captures symbolic residue (valuable signals from failures, hesitations, and contradictions) and uses it to fuel further evolution.
+
+## Architecture
+
+`evo` consists of three core components:
+
+### 🧠 EvoCore
+
+The evolvable artifact repository. Contains:
+- Target codebases and algorithms
+- Evaluation harnesses and test suites
+- Git integration for tracking evolutionary progress
+- Language-agnostic support (Python, JavaScript, Go, etc.)
+
+### 💡 EvoIntel
+
+The evolutionary memory and intelligence center. Stores:
+- Reflections and insights from past evolutions
+- EvoBlueprints (template evolutionary strategies)
+- Symbolic residue catalogs
+- Cross-domain innovation patterns
+
+### ⚙️ EvoOps
+
+The orchestration engine. Manages:
+- AI agent selection and prompt generation
+- Evaluation pipeline and feedback processing
+- GitHub automation and workflow integration
+- Monitoring and logging of evolutionary progress
+
+These components are exposed through two user-facing interfaces:
+
+### 💬 EvoChat
+
+A natural language interface for evolving code through conversation.
+
+```
+You: I want to optimize this sort algorithm for better performance.
+EvoChat: Great! Can you share the code you'd like to evolve?
+You: [paste code]
+EvoChat: I'll help you evolve this. What specific aspects of performance 
+         are most important? Time complexity, memory usage, or both?
+You: Time complexity is the priority.
+EvoChat: Perfect. I'll start an evolutionary cycle focusing on time complexity 
+         while maintaining correctness. Would you like to use the "Algorithm 
+         Optimization" blueprint or customize the evolutionary process?
+...
+```
+
+### 🔗 EvoAPI
+
+A REST API for integrating evolution into existing workflows:
+
 ```python
-import evo
+import requests
 
-# Create an evolving agent
-agent = evo.Agent("claude", domain="research")
+response = requests.post("https://api.evochat.ai/evolve/start", json={
+    "code": "def bubble_sort(arr): ...",
+    "goal": "Optimize for time complexity",
+    "blueprint": "algorithm_optimization",
+    "api_key": "YOUR_API_KEY"
+})
 
-# Start with any prompt
-response = agent.run("Explain quantum computing")
+task_id = response.json()["task_id"]
 
-# Give feedback to improve
-evolved = agent.evolve(response, "Make it more accessible to beginners")
-
-# Your AI just got better at explaining complex topics
-print(evolved.improvement_summary)
+# Check status or provide guidance during evolution
+status = requests.get(f"https://api.evochat.ai/evolve/{task_id}/status")
 ```
 
-**Web Interface**
+## Key Features
+
+### 🧩 EvoBlueprints
+
+Pre-packaged evolutionary recipes for common tasks:
+- **Algorithm Optimization Suite**
+- **Prompt Engineering Evolution**
+- **Code Refactoring Assistant**
+- **Test Coverage Expander**
+
+```python
+# Use a blueprint from command line
+evo evolve my_algorithm.py --blueprint algorithm_optimization
+```
+
+### 🔄 Recursive Depth Layers
+
+Each prompt interaction adds a recursive depth layer:
+- Layer 1: Initial problem analysis and strategy formation
+- Layer 2: Code generation and implementation
+- Layer 3: Critical evaluation and refinement
+- Layer 4: Resonance analysis and coherence optimization
+- Layer N: Emergent solution discovery
+
+### 🚀 GitHub Integration
+
+Seamlessly integrate with GitHub workflows:
+- Comment `/evolve optimize` on issues or PRs
+- Automatically create PRs with evolved code
+- Attach evolution reports to PR comments
+- Track evolution history with specialized git tags
+
+### 💎 Symbolic Residue Harvesting
+
+Capture and utilize valuable signals from:
+- Failed evolutionary branches
+- Near-miss solutions
+- Model hesitations and uncertainties
+- Contradictions and trade-offs
+
+### 🌐 Multi-Agent Evolution
+
+Leverage the unique strengths of different AI models:
+- **Claude**: Deep reflection and coherence analysis
+- **Gemini**: Robust code generation and context handling
+- **GPT-4**: Creative divergence and exploratory branches
+- **Specialized Models**: Domain-specific optimization
+
+## Getting Started
+
+### Installation
+
+```bash
+# Install from PyPI
+pip install evo-ai
+
+# Or clone and install from source
+git clone https://github.com/evolve-ai/evo.git
+cd evo
+pip install -e .
+```
+
+### Basic Usage
+
+#### CLI
+
+```bash
+# Initialize a new evolution project
+evo init my-project
+
+# Start evolution with a specific goal
+evo evolve path/to/code.py --goal "Optimize for speed" --blueprint algorithm_optimization
+
+# Start interactive evolution through chat
+evo chat
+```
+
+#### Python API
+
+```python
+from evo import Evolution
+
+# Create an evolution task
+evolution = Evolution(
+    target="path/to/code.py",
+    goal="Optimize for speed while maintaining readability",
+    blueprint="algorithm_optimization"
+)
+
+# Start the evolution process
+task = evolution.start()
+
+# Check status
+status = task.status()
+print(f"Evolution status: {status['stage']}, progress: {status['progress']}%")
+
+# Provide guidance during evolution
+task.guide("Focus more on vectorization techniques")
+
+# Get results when complete
+results = task.results()
+print(f"Evolved code: {results['code']}")
+print(f"Performance improvement: {results['metrics']['improvement']}%")
+```
+
+#### Web UI
+
+For a user-friendly interface, run:
+
 ```bash
 evo serve
-# Opens at http://localhost:3000
 ```
 
-**CLI**
-```bash
-evo start --model gpt4 --goal "better code review" --iterations 5
-```
+Then visit `http://localhost:8000` in your browser.
 
+## EvoBlueprints
 
-## 🎯 What Makes evo Different
+EvoBlueprints are pre-packaged evolutionary strategies for common tasks. They include:
 
-### Universal Compatibility
-- **Claude, GPT-4, Gemini, Codex** - Use any AI, same simple interface
-- **Local models** - Works with Llama, Mistral, and custom models
-- **API agnostic** - Adapts to any AI provider automatically
+- **AI agent selection and sequence**
+- **Prompt templates and evaluation criteria**
+- **Specialized evolution parameters**
+- **Domain-specific knowledge and heuristics**
 
-### Zero Technical Barriers
-- **Natural feedback** - "Make it more creative" instead of complex parameters
-- **No prompt engineering** - evo handles optimization automatically  
-- **Visual evolution** - Watch your AI improve in real-time
-
-### Enterprise Ready
-- **Scale to teams** - Share evolving agents across organizations
-- **Industry templates** - Pre-built workflows for law, healthcare, finance
-- **ROI tracking** - Measure improvement and cost savings
-
-### Research Backed
-Built on breakthrough theories from DeepMind's AlphaEvolve and symbolic emergence research. Every interaction follows proven evolution patterns that create genuine capability improvements.
-
-
-## 🌟 Real-World Results
-
-**Legal Firm**: Evolved contract analysis from 60% accuracy to 94% in 12 iterations  
-**Biotech Lab**: Reduced research hypothesis generation time by 70%  
-**Creative Agency**: Improved client proposal win rate from 30% to 67%  
-**Startup**: Cut technical documentation time from days to hours
-
-
-## 💡 Core Concepts
-
-### Reflective Evolution
-Instead of static AI calls, evo creates **feedback loops** where each response becomes the foundation for the next improvement cycle.
-
-### Constraint-Driven Growth
-Following the Universal Residue Equation `Σ = C(S + E)^r`, evo transforms limitations into evolutionary fuel. Every constraint becomes a growth opportunity.
-
-### Symbolic Bridging
-evo translates complex AI capabilities into intuitive interactions. You think in terms of goals and feedback; evo handles the technical complexity.
-
-
-## 🛠 Architecture
-
-```
-evo/
-├── core/              # Evolution engine
-├── adapters/          # AI model interfaces  
-├── templates/         # Domain-specific workflows
-├── interface/         # Web, CLI, API layers
-├── examples/          # Practical use cases
-└── docs/             # Complete documentation
-```
-
-**Core Evolution Loop**
-1. **Generate** - AI produces initial response
-2. **Evaluate** - Automatic quality assessment  
-3. **Feedback** - User provides improvement direction
-4. **Evolve** - System creates improved version
-5. **Repeat** - Continuous improvement cycle
-
-
-## 📚 Examples
-
-### Research Paper Evolution
-```python
-agent = evo.Agent("claude", domain="academic")
-
-paper = agent.evolve(
-    "Write an abstract about AI safety",
-    feedback=[
-        "Add more specific technical details",
-        "Include recent research citations", 
-        "Make the contribution clearer"
-    ]
-)
-# Result: Professional academic abstract with proper citations
-```
-
-### Creative Writing Evolution
-```python
-agent = evo.Agent("gpt4", domain="creative")
-
-story = agent.evolve(
-    "Write a sci-fi short story",
-    feedback=[
-        "Develop the characters more deeply",
-        "Add more vivid world-building",
-        "Create more tension in the plot"
-    ]
-)
-# Result: Rich, engaging story with complex characters
-```
-
-### Code Review Evolution
-```python
-agent = evo.Agent("codex", domain="engineering")
-
-review = agent.evolve(
-    code_file,
-    feedback=[
-        "Focus on security vulnerabilities",
-        "Suggest performance optimizations",
-        "Check for best practices"
-    ]
-)
-# Result: Comprehensive code review with actionable improvements
-```
-
-
-## 🏢 Enterprise Solutions
-
-### Industry Templates
-
-**Legal**: Contract analysis, brief writing, legal research  
-**Healthcare**: Clinical decision support, research synthesis  
-**Finance**: Risk analysis, compliance review, report generation  
-**Education**: Curriculum design, assessment creation  
-**R&D**: Hypothesis generation, experimental design
-
-### Deployment Options
-
-- **Cloud**: Fully managed evo instances
-- **On-premise**: Private deployment with security controls
-- **Hybrid**: Combine cloud and private models seamlessly
-
-### ROI Metrics
-- **25-40%** improvement in AI task quality
-- **30-50%** reduction in iteration cycles
-- **2-3x** faster prototype development
-
-
-## 🤝 Community
-
-### Contributing
-- **Developers**: Add new AI adapters, improve core algorithms
-- **Researchers**: Share evolution patterns, validate theories  
-- **Domain Experts**: Create industry-specific templates
-- **Users**: Report improvements, share success stories
-
-### Recognition
-- **Contributor badges** for significant improvements
-- **Feature showcases** for breakthrough evolutions
-- **Research collaborations** with leading AI labs
-
-### Connect
-- **Discord**: Real-time community support
-- **GitHub Discussions**: Technical conversations
-- **Twitter**: Latest updates and showcases
-- **LinkedIn**: Professional use cases and results
-
-
-## 🔬 Research Foundation
-
-evo is built on rigorous scientific principles:
-
-### Symbolic Emergence Theory
-Mathematical framework for how constraints generate structured information across domains.
-
-### Five Transformation Patterns
-- **Fanonian (Φ)**: Liberation through constraint pressure
-- **Silence (Ψ)**: Information compression and emergence  
-- **Living Memory (Λ)**: Distributed knowledge retention
-- **Exile (Ξ)**: Perspective multiplication through marginality
-- **Co-Evolution (⊗)**: Human-AI symbiotic enhancement
-
-### Empirical Validation
-Tested across 1000+ evolution cycles with measurable quality improvements in every domain.
-
-
-## 🗺 Roadmap
-
-### v1.0 - Foundation ✅
-- Core evolution engine
-- Claude, GPT, Gemini adapters
-- Web and CLI interfaces
-- Basic templates
-
-### v1.5 - Enhancement 🔄  
-- Multi-agent evolution
-- Advanced analytics
-- Custom model support
-- Enterprise features
-
-### v2.0 - Ecosystem 📋
-- Plugin marketplace
-- Federated evolution
-- Advanced visualizations
-- Industry partnerships
-
-
-## 📄 License
-
-MIT License - Use evo freely in personal and commercial projects.
-
-
-## 🚀 Get Started Now
+### Using Blueprints
 
 ```bash
-pip install evo-ai
-evo demo  # Interactive 5-minute tutorial
+# List available blueprints
+evo blueprints list
+
+# Get details about a specific blueprint
+evo blueprints info algorithm_optimization
+
+# Use a blueprint
+evo evolve code.py --blueprint algorithm_optimization
 ```
 
-**Ready to evolve your AI?**
+### Creating Custom Blueprints
 
-[Documentation](https://docs.evo-ai.com) | [Examples](https://github.com/evo-ai/examples) | [Discord](https://discord.gg/evo-ai) | [Twitter](https://twitter.com/evo_ai)
+```bash
+# Create a new blueprint from a successful evolution
+evo blueprints create my_custom_blueprint --from-task task_id
 
+# Edit a blueprint
+evo blueprints edit my_custom_blueprint
 
-*Transform any AI interaction into an evolving intelligence. Start your evolution today.*
+# Share a blueprint with the community
+evo blueprints publish my_custom_blueprint
+```
+
+## Community
+
+- [Discord](https://discord.gg/evolve-ai)
+- [Forum](https://community.evochat.ai)
+- [Twitter](https://twitter.com/evo_ai)
+- [Blog](https://blog.evochat.ai)
+
+## Contributing
+
+We welcome contributions from the community! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Types of Contributions
+
+- **Code**: Enhance the core framework
+- **EvoBlueprints**: Share specialized evolutionary strategies
+- **Documentation**: Improve guides and examples
+- **Bug Reports**: Help us identify and fix issues
+- **Feature Requests**: Suggest new capabilities
+
+## Roadmap
+
+- [ ] **Q3 2025**: Support for more programming languages and domains
+- [ ] **Q4 2025**: Enhanced symbolic residue analysis
+- [ ] **Q1 2026**: Federated blueprint marketplace
+- [ ] **Q2 2026**: Self-evolving orchestration engine
+- [ ] **Q3 2026**: Cross-domain transfer learning
+
+## License
+
+`evo` is released under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+  <p>
+    <sub>
+      Built with ❤️ by the evolution community.
+    </sub>
+  </p>
+</div>
