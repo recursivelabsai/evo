@@ -37,7 +37,7 @@ evo chat
 evo evolve path/to/code.py --goal "Optimize for speed while maintaining readability"
 ```
 
-Or try our hosted version at [evochat.ai](https://evochat.ai)
+Or try our hosted version at [evochat.ai](https://evochat.ai) (Coming Soon!)
 
 ## Introduction
 
