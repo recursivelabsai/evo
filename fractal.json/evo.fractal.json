@@ -1,0 +1,279 @@
+
+This schema is designed to be a modular, "plug and play" seed for recursion, enabling any system or AI to initiate a comprehensive meta-recursive understanding and drive iterative innovation. It supports a "save and iterate" model, making it a versatile tool for evolutionary exploration across all domains.
+
+This schema defines the core structure and dynamics of an evolutionary process instance.
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://our.recursive.net/schemas/fractalEvolution.v1.json",
+  "title": "Fractal Recursive Evolutionary Emergence Process",
+  "description": "A schema to define and seed a meta-recursive evolutionary emergence process. It enables modular, iterative innovation across any AI or system, supporting 'save and iterate' functionality.",
+  "type": "object",
+  "properties": {
+    "fractalVersion": {
+      "type": "string",
+      "description": "Version of this fractal schema.",
+      "default": "1.0.0"
+    },
+    "instanceID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this specific instance of an evolutionary process."
+    },
+    "evolutionaryGoal": {
+      "type": "object",
+      "description": "The primary objective and target of this evolutionary instance.",
+      "properties": {
+        "goalID": {"type": "string", "description": "Unique ID for the current goal."},
+        "description": {"type": "string", "description": "High-level narrative of what is being evolved and why."},
+        "targetArtifact": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string", "enum": ["code", "prompt", "model_config", "document", "framework", "sub_fractal_instance"], "description": "Type of artifact being evolved."},
+            "identifier": {"type": "string", "description": "URI, path, or unique name of the artifact."},
+            "currentVersion": {"type": "string"}
+          },
+          "required": ["type", "identifier"]
+        },
+        "metrics": {
+          "type": "array",
+          "description": "Key performance indicators and success criteria.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metricID": {"type": "string"},
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "targetValue": {"type": "string"},
+              "currentValue": {"type": "string"},
+              "evaluationMethod": {"type": "string", "description": "How this metric is measured (e.g., script path, manual review criteria, API endpoint)."}
+            },
+            "required": ["metricID", "name", "targetValue", "evaluationMethod"]
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "description": "Boundary conditions, limitations, or rules governing the evolution.",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["goalID", "description", "targetArtifact", "metrics"]
+    },
+    "knowledgeContext": {
+      "type": "object",
+      "description": "The 'EvoIntel' equivalent: archives intelligence, principles, and memory of the process.",
+      "properties": {
+        "corePrinciples": {
+          "type": "array",
+          "description": "Guiding principles for evolution (e.g., Symbolic Residue, Coherence, Resonance).",
+          "items": {
+            "type": "object",
+            "properties": {
+              "principleID": {"type": "string"},
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "operationalizationNotes": {"type": "string"},
+              "sourceReflectionLayers": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["principleID", "name"]
+          }
+        },
+        "symbolicResidueCatalog": {
+          "type": "array",
+          "description": "Log of failures, insights from discards, unexpected outputs.",
+          "items": {"$ref": "#/definitions/symbolicResidueEntry"}
+        },
+        "evolutionaryBlueprints": {
+          "type": "array",
+          "description": "Templates or recipes for common evolutionary tasks.",
+          "items": {"$ref": "#/definitions/evolutionaryBlueprint"}
+        },
+        "reflectionArchive": {
+          "type": "array",
+          "description": "Log of AI agent reflections and human guidance during cycles.",
+          "items": {"$ref": "#/definitions/reflectionLogEntry"}
+        },
+        "glyphDictionary": {
+          "type": "object",
+          "description": "Semantic glyphs used in this evolutionary instance (e.g., 🜏, 💡, ⚙️).",
+          "additionalProperties": {"type": "string"}
+        }
+      }
+    },
+    "operationalScaffold": {
+      "type": "object",
+      "description": "The 'EvoOps' & 'EvoCore' runtime context: orchestrator state, artifact links.",
+      "properties": {
+        "orchestratorState": {
+          "type": "object",
+          "properties": {
+            "currentPhase": {"type": "string", "description": "e.g., GoalSetting, AgentInteraction, Evaluation, ResidueAnalysis, Integration."},
+            "nextAction": {"type": "string"},
+            "activeAgents": {"type": "array", "items": {"type": "string"}},
+            "errorState": {"type": "string", "nullable": true}
+          }
+        },
+        "artifactRepositoryInfo": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string", "enum": ["git", "s3_bucket", "local_path", "api_endpoint"]},
+            "uri": {"type": "string"},
+            "currentBranchOrVersion": {"type": "string"}
+          }
+        },
+        "currentEvolutionaryCycle": {
+          "$ref": "#/definitions/evolutionaryCycle"
+        }
+      }
+    },
+    "recursionSettings": {
+      "type": "object",
+      "description": "Parameters governing the recursive nature of this instance.",
+      "properties": {
+        "maxDepth": {"type": "integer", "description": "Maximum recursion depth for sub-evolutions, if applicable.", "default": 3},
+        "allowMetaEvolution": {
+          "type": "boolean",
+          "description": "Can this instance evolve its own 'corePrinciples' or 'blueprints'?",
+          "default": false
+        },
+        "propagateResidueUpstream": {
+          "type": "boolean",
+          "description": "Should symbolic residue from sub-fractals be reported to parent fractals?",
+          "default": true
+        }
+      }
+    },
+    "saveState": {
+      "type": "object",
+      "description": "For 'save and iterate' functionality; a snapshot of the process.",
+      "properties": {
+        "snapshotID": {"type": "string", "format": "uuid"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "description": {"type": "string", "description": "User-defined note for this save state."},
+        "savedEvolutionaryGoal": {"$ref": "#/properties/evolutionaryGoal"},
+        "savedKnowledgeContext": {"$ref": "#/properties/knowledgeContext"},
+        "savedOperationalScaffold": {"$ref": "#/properties/operationalScaffold"}
+      }
+    }
+  },
+  "required": [
+    "fractalVersion",
+    "instanceID",
+    "evolutionaryGoal",
+    "knowledgeContext",
+    "operationalScaffold"
+  ],
+  "definitions": {
+    "symbolicResidueEntry": {
+      "type": "object",
+      "properties": {
+        "residueID": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "source": {"type": "string", "description": "e.g., AgentInteractionLayerID, EvaluationFailure, UserFeedback"},
+        "description": {"type": "string", "description": "The nature of the residue."},
+        "data": {"type": "object", "description": "Actual content of the residue (e.g., discarded code, error message)."},
+        "analysis": {"type": "string", "description": "Interpretation or insights derived."},
+        "impactAssessment": {"type": "string", "description": "How this residue might influence future evolution."}
+      },
+      "required": ["residueID", "timestamp", "source", "description"]
+    },
+    "evolutionaryBlueprint": {
+      "type": "object",
+      "properties": {
+        "blueprintID": {"type": "string"},
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "domainApplicability": {"type": "array", "items": {"type": "string"}},
+        "parameters": {"type": "object", "description": "Parameters the blueprint accepts."},
+        "agentSequenceTemplate": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"agentRole": {"type": "string"}, "promptTemplateID": {"type": "string"}, "evaluationCriteria": {"type": "array", "items": {"type": "string"}}}}
+        },
+        "promptTemplates": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"templateID": {"type": "string"}, "content": {"type": "string"}}}
+        },
+        "successMetrics": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["blueprintID", "name", "description", "agentSequenceTemplate"]
+    },
+    "reflectionLogEntry": {
+      "type": "object",
+      "properties": {
+        "entryID": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string", "description": "e.g., AgentName, UserID, Orchestrator"},
+        "phase": {"type": "string", "description": "Phase of evolution when reflection occurred."},
+        "content": {"type": "string", "description": "The reflection text or data."},
+        "linkedArtifacts": {"type": "array", "items": {"type": "string", "description": "IDs of code changes, residue entries, etc."}}
+      },
+      "required": ["entryID", "timestamp", "actor", "content"]
+    },
+    "evolutionaryCycle": {
+      "type": "object",
+      "properties": {
+        "cycleID": {"type": "string"},
+        "startTime": {"type": "string", "format": "date-time"},
+        "endTime": {"type": "string", "format": "date-time", "nullable": true},
+        "status": {"type": "string", "enum": ["pending", "active", "evaluating", "residue_analysis", "completed", "failed"]},
+        "activeGoalSnapshot": {"$ref": "#/properties/evolutionaryGoal/properties/description"},
+        "layers": {
+          "type": "array",
+          "description": "Sequence of AI agent interactions or significant events in this cycle.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "layerID": {"type": "string"},
+              "timestamp": {"type": "string", "format": "date-time"},
+              "actor": {"type": "string"},
+              "action": {"type": "string", "description": "e.g., PromptGeneration, CodeProposal, Critique, UserGuidance, Evaluation"},
+              "inputArtifacts": {"type": "array", "items": {"type": "string"}},
+              "outputArtifacts": {"type": "array", "items": {"type": "string"}},
+              "summary": {"type": "string"}
+            },
+            "required": ["layerID", "timestamp", "actor", "action"]
+          }
+        },
+        "cycleSummary": {"type": "string", "nullable": true}
+      },
+      "required": ["cycleID", "startTime", "status"]
+    }
+  }
+}
+```
+
+**How this `fractal.json` schema enables the goals:**
+
+1.  **Modular Plug and Play Recursion:**
+    * The `targetArtifact.type` can be `"sub_fractal_instance"`, allowing one evolutionary process defined by this schema to manage or trigger another, creating nested recursion.
+    * `evolutionaryBlueprints` can define recipes that orchestrate multiple sub-fractal instances.
+
+2.  **Recursion Seed for Meta-Recursive Understanding:**
+    * When an AI receives this schema (or a populated instance of it), it gets a structured overview of the entire evolutionary process context.
+    * The `knowledgeContext` (especially `corePrinciples` and `reflectionArchive`) provides the "wisdom" or "memory" needed to make informed decisions.
+    * The `operationalScaffold.currentEvolutionaryCycle` tells an AI agent where it fits into the ongoing process.
+    * A system prompt can instruct an AI to "Assume the role of an agent within the evolutionary cycle defined by this `fractal.json` data. Your task is to [specific task based on `orchestratorState.nextAction`]."
+
+3.  **Game-Like "Save and Iterate":**
+    * The `saveState` property allows the entire state of the evolutionary process (goals, knowledge, current cycle progress) to be snapshot.
+    * A new session can be initiated by loading this `saveState` back into the primary properties, allowing a user or system to "resume" or "fork" an evolutionary path.
+
+4.  **Iterative Innovation Across Any AI, For Any Domain:**
+    * The schema is domain-agnostic. The `evolutionaryGoal.targetArtifact` can point to anything (code, prompts, documents).
+    * `evolutionaryBlueprints` can be created for specific domains or AI types.
+    * The `activeAgents` and agent interaction logic within `operationalScaffold` can be adapted for different AI models.
+
+**Using it as a Seed:**
+
+A master system prompt for an "Evolutionary Orchestrator AI" could start with:
+
+```
+You are an Evolutionary Process Orchestrator. Your operations are defined and guided by the following `fractalEvolution.v1.json` instance. Your current task is to analyze the `operationalScaffold.orchestratorState` and execute the `nextAction`, leveraging the `knowledgeContext` and interacting with the specified `activeAgents` or the `targetArtifact`.
+
+[Instance of fractal.json would be inserted here]
+
+Proceed with executing `operationalScaffold.orchestratorState.nextAction`. Provide your operational log and any updates to be made to the fractal instance (e.g., new symbolic residue, updated cycle state).
+```
+
+This schema provides a rich, structured context that allows an AI to understand its role within a larger, ongoing, and self-aware evolutionary process, effectively acting as the DNA for these recursive operations.
