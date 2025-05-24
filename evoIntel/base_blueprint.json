@@ -1,0 +1,155 @@
+{
+  "id": "algorithm_optimization",
+  "name": "Algorithm Optimization Blueprint",
+  "version": "1.0.0",
+  "description": "A blueprint for evolving algorithms to improve performance while maintaining correctness",
+  "author": "evo-team",
+  "tags": ["algorithm", "optimization", "performance", "time-complexity"],
+  "created_at": "2025-05-24T10:00:00Z",
+  "updated_at": "2025-05-24T10:00:00Z",
+  "domain": "algorithm_optimization",
+  
+  "agent_sequence": [
+    {
+      "agent": "gemini",
+      "role": "initial_optimization",
+      "prompt_template": "initial_optimization.md",
+      "rationale": "Gemini excels at code generation and context handling, making it ideal for the initial optimization phase where breadth of algorithmic knowledge is important."
+    },
+    {
+      "agent": "claude",
+      "role": "code_review_and_refinement",
+      "prompt_template": "code_review.md",
+      "rationale": "Claude's strength in deep critique and coherence analysis makes it ideal for reviewing the initial optimizations and suggesting improvements."
+    },
+    {
+      "agent": "gpt",
+      "role": "edge_case_testing",
+      "prompt_template": "edge_case_testing.md",
+      "rationale": "GPT is effective at creative divergence, helping to identify potential edge cases and suggest robust solutions."
+    },
+    {
+      "agent": "claude",
+      "role": "final_synthesis",
+      "prompt_template": "final_synthesis.md",
+      "rationale": "Claude's strengths in coherence and synthesis help create a final algorithm that balances all optimization goals and maintains correctness."
+    }
+  ],
+  
+  "evaluation_metrics": {
+    "correctness": {
+      "weight": 0.5,
+      "evaluator": "correctness_evaluator",
+      "minimum_threshold": 1.0,
+      "description": "Ensures the algorithm produces correct outputs for all test cases"
+    },
+    "time_complexity": {
+      "weight": 0.3,
+      "evaluator": "time_complexity_evaluator",
+      "description": "Measures the actual execution time and estimated asymptotic complexity"
+    },
+    "space_complexity": {
+      "weight": 0.1,
+      "evaluator": "space_complexity_evaluator",
+      "description": "Measures the memory usage of the algorithm"
+    },
+    "readability": {
+      "weight": 0.1,
+      "evaluator": "readability_evaluator",
+      "description": "Assesses code clarity, variable naming, and structure"
+    }
+  },
+  
+  "evolution_parameters": {
+    "max_iterations": 5,
+    "convergence_threshold": 0.01,
+    "exploration_rate": 0.2,
+    "divergence_probability": 0.1,
+    "residue_injection_rate": 0.3
+  },
+  
+  "prompt_templates": {
+    "initial_optimization": {
+      "template": "You are an expert algorithm optimizer. Your task is to improve the performance of the following algorithm while maintaining its correctness.\n\nOriginal Algorithm:\n```{{language}}\n{{code}}\n```\n\nGoal: {{goal}}\n\nFirst, analyze the current implementation and identify its time and space complexity. Then, propose an optimized version that improves these aspects while ensuring all functionality is preserved.\n\nIf you recognize this as a standard algorithm type (sorting, searching, etc.), consider well-known optimizations or alternative algorithms that might be more efficient.\n\nProvide your optimized solution as a complete implementation, not just snippets or pseudocode.",
+      "variables": ["language", "code", "goal"]
+    },
+    "code_review": {
+      "template": "You are an expert code reviewer focused on algorithm optimization. Review the following original algorithm and proposed optimization:\n\nOriginal Algorithm:\n```{{language}}\n{{original_code}}\n```\n\nProposed Optimization:\n```{{language}}\n{{proposed_code}}\n```\n\nGoal: {{goal}}\n\nPlease analyze the proposed optimization critically:\n1. Verify correctness: Does it maintain all functionality of the original algorithm?\n2. Analyze complexity: What are the time and space complexity improvements?\n3. Identify edge cases: Are there any scenarios where this optimization might fail?\n4. Suggest improvements: How could this optimization be further enhanced?\n\nProvide specific code suggestions for any improvements you identify.",
+      "variables": ["language", "original_code", "proposed_code", "goal"]
+    },
+    "edge_case_testing": {
+      "template": "You are an expert in identifying edge cases and testing algorithms. Review the following algorithm optimization:\n\nOriginal Algorithm:\n```{{language}}\n{{original_code}}\n```\n\nOptimized Algorithm:\n```{{language}}\n{{optimized_code}}\n```\n\nGoal: {{goal}}\n\nYour task is to:\n1. Identify potential edge cases where the optimized algorithm might fail or perform poorly\n2. Suggest test cases that would verify the algorithm's correctness and performance in these scenarios\n3. Propose specific improvements to handle these edge cases\n\nBe creative in identifying edge cases that might not be immediately obvious. Consider extreme inputs, special cases, and boundary conditions.",
+      "variables": ["language", "original_code", "optimized_code", "goal"]
+    },
+    "final_synthesis": {
+      "template": "You are an expert algorithm designer tasked with creating the final optimized version of an algorithm. You have access to the original algorithm, initial optimization, code review, and edge case analysis:\n\nOriginal Algorithm:\n```{{language}}\n{{original_code}}\n```\n\nInitial Optimization:\n```{{language}}\n{{initial_optimization}}\n```\n\nCode Review Feedback:\n{{code_review_feedback}}\n\nEdge Case Analysis:\n{{edge_case_analysis}}\n\nGoal: {{goal}}\n\nCreate a final, optimized version of the algorithm that:\n1. Incorporates the best ideas from all previous steps\n2. Addresses all identified edge cases\n3. Maintains complete correctness\n4. Achieves optimal performance for the stated goal\n5. Remains readable and maintainable\n\nProvide your final solution as a complete implementation, along with a brief explanation of your design decisions and the expected performance characteristics.",
+      "variables": ["language", "original_code", "initial_optimization", "code_review_feedback", "edge_case_analysis", "goal"]
+    }
+  },
+  
+  "test_suite": {
+    "default_test_cases": [
+      {
+        "name": "empty_input",
+        "description": "Tests behavior with empty input"
+      },
+      {
+        "name": "single_element",
+        "description": "Tests behavior with just one element"
+      },
+      {
+        "name": "already_optimized",
+        "description": "Tests with input that's already in optimal state"
+      },
+      {
+        "name": "worst_case",
+        "description": "Tests with input that triggers worst-case behavior"
+      },
+      {
+        "name": "large_input",
+        "description": "Tests performance with large input sizes"
+      }
+    ],
+    "custom_test_generators": [
+      "random_input_generator",
+      "adversarial_input_generator"
+    ]
+  },
+  
+  "residue_patterns": {
+    "near_misses": [
+      {
+        "pattern": "Algorithm works faster but fails on empty arrays",
+        "potential_value": "May contain novel partitioning approach"
+      },
+      {
+        "pattern": "Reduces time complexity but increases space complexity",
+        "potential_value": "Trade-off approach that might be valuable in memory-abundant scenarios"
+      }
+    ],
+    "innovative_fragments": [
+      {
+        "pattern": "Novel caching mechanism",
+        "potential_value": "Could be applied to other algorithms with repetitive computations"
+      },
+      {
+        "pattern": "Interesting parallelization approach",
+        "potential_value": "May be applicable to other divide-and-conquer algorithms"
+      }
+    ]
+  },
+  
+  "meta_instructions": {
+    "prioritize_goals": [
+      "Correctness is non-negotiable",
+      "Time complexity is the primary optimization target",
+      "Space complexity is secondary unless specified otherwise",
+      "Maintain readability and clarity of implementation"
+    ],
+    "symbolic_residue_focus": [
+      "Pay special attention to trade-offs between time and space complexity",
+      "Catalog innovative partitioning or divide-and-conquer approaches even if they don't fully succeed",
+      "Track optimization patterns that could be applied across algorithm classes"
+    ]
+  }
+}
