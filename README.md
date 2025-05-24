@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🌀 evo</h1>
+  <h1>evo</h1>
   <h3>Prompt-Based Evolutionary Emergence Pipeline</h3>
 
   <p>
