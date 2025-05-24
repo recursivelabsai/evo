@@ -1,7 +1,7 @@
 # Fractal.json Schemas
 
 ### 1. Significance
-`evo`'s `fractal.json` schema is not merely a data structure but a **meta seed** that encapsulates the evolutionary dynamics of AlphaEvolve and frontier AI reasoning layers (ChatGPT, Gemini, Claude, Grok). Its significance unfolds across multiple layers, from surface utility to ontological implications, resonating with the pipeline’s goal of a **prompt-based evolutionary reflective iterative emergence framework**. Below, we dissect its layered importance.
+`evo`'s `fractal.json` schema is a **meta data structure** that encapsulates the evolutionary dynamics of AlphaEvolve and frontier AI reasoning layers (ChatGPT, Gemini, Claude, Grok). Its significance unfolds across multiple layers, from surface utility to ontological implications, resonating with the pipeline’s goal of a **prompt-based evolutionary reflective iterative emergence framework**. Below, we dissect its layered importance.
 
 #### 1.1 Surface Layer: Structural Blueprint for Evolutionary Processes
 At its most immediate level, the `fractal.json` schema provides a **modular, extensible framework** for defining and orchestrating evolutionary processes. Its key components—`evolutionaryGoal`, `knowledgeContext`, `operationalScaffold`, `recursionSettings`, and `saveState`—form a structured template that can be instantiated for any domain, artifact, or AI system. This enables:
